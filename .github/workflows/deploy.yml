@@ -35,7 +35,7 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
         source: "app.py"
-        target: "/home/${{ secrets.EC2_USER }}/app/"
+        target: "/home/${{ secrets.EC2_USER }}/CICD-Pipeline/"
 
     - name: Restart app on EC2
       uses: appleboy/ssh-action@v0.1.10
