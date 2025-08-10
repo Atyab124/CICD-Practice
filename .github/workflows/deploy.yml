@@ -27,7 +27,14 @@ jobs:
       run: python -m pytest -q
       env:
         PYTHONPATH: .
-    
+
+    - name: Setup SSH known hosts
+      run: |
+        mkdir -p ~/.ssh
+        echo "Host *" > ~/.ssh/config
+        echo "    StrictHostKeyChecking no" >> ~/.ssh/config
+        chmod 600 ~/.ssh/config
+
     - name: Save private key
       run: echo "${{ secrets.EC2_SSH_KEY }}" > ./key.pem && chmod 600 ./key.pem
 
