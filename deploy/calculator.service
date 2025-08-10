@@ -1,0 +1,13 @@
+[Unit]
+Description=Calculator Flask App
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/CICD-Pipeline
+Environment=PATH=/home/ubuntu/CICD-Pipeline/venv/bin
+ExecStart=/home/ubuntu/CICD-Pipeline/venv/bin/gunicorn -w 2 -b 0.0.0.0:8000 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
